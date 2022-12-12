@@ -59,6 +59,8 @@ key_w=pygame.K_w
 key_a=pygame.K_a
 key_s=pygame.K_s
 key_d=pygame.K_d
+key_space=pygame.K_SPACE
+key_0=pygame.K_0
 
 #Funtion keys pressed on keyboard
 def get_keys_pressed():
