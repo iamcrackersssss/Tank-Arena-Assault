@@ -20,8 +20,14 @@ def display_bullet():
         bullet_obj=image("Imgs/Ammo.png",20,20,bullet["x"],bullet["y"])
         bullet["bullet_object"]=bullet_obj#updated line
 
+    for bullet2 in bullet_list2:
+        if bullet2["y"]<0: #if the bullet moves out of the screen we arew going to delete it
+            bullet_list2.remove(bullet2)
+        bullet2_obj=image("Imgs/bullet_2.png",20,20,bullet2["x"],bullet2["y"])
+        bullet2["bullet_object"]=bullet2_obj#updated line
+
 def change():
-    global bullet_list, movement_speed, Tank1_x, Tank1_y, bullet,Tank2_x,Tank2_y
+    global bullet_list, movement_speed, Tank1_x, Tank1_y, bullet,Tank2_x,Tank2_y,bullet2,bullet_list2
     set_background(color_mid_night_blue)
     Tank1 = image("Imgs/Both_Tanks.png",50,50,Tank1_x,Tank1_y)
     Tank2 = image("Imgs/Tank2.png",50,50,Tank2_x,Tank2_y)
@@ -38,10 +44,12 @@ def change():
         bullet_list.append(bullet)
         print("bullet created")
     
-    #if keys[key_0]:
-        #bullet2={"x":"","y":"","bullet_object":""}
-        #bullet2=["x"]=Tank2_x
-        #bullet2=["y"]=Tank2_y
+    if keys[key_Q]:
+        bullet2={"x":"","y":"","bullet2_object":""}
+        bullet2["x"]=Tank2_x
+        bullet2["y"]=Tank2_y
+        bullet_list2.append(bullet2)
+        print("bullet created")
 
 
     if keys[key_up]:
@@ -66,5 +74,8 @@ def change():
 
     for bullet in bullet_list:
         bullet["x"]+=15
+    
+    for bullet2 in bullet_list2:
+        bullet2["x"]-=15
 
 draw(change)
